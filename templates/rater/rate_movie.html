@@ -1,0 +1,74 @@
+{% block content %}
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #4db5d2;}
+/* Center the page content */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Style the form */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3085c6;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  label {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  select {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  input[type="submit"] {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0062cc;
+  }</style>
+  <h1>Rate {{ movie.title }}</h1>
+  <h2>{{movie.description}}</h2>
+  <h3>{{movie.value}}</h3>
+  <form method="post">
+    {% csrf_token %}
+    <label for="rating">Rating:</label>
+    <select name="rating" id="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}

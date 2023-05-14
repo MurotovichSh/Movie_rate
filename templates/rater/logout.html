@@ -1,0 +1,42 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .button{
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .button:hover {
+    background-color: #0062cc;
+  }
+    </style>
+</head>
+<body>
+   <h2> You have successfully logged out!</h2>
+<button class="button">Return to the main page</button>
+<script>
+    const backButton= document.querySelectorAll('.button');
+backButton.forEach(function(backButton){
+  backButton.addEventListener('click',function(){
+    window.location.href = '/'
+})
+})
+</script>
+</body>
+</html>
+{% endblock content %}
