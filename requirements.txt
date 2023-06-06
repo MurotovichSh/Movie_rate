@@ -1,2 +1,2 @@
 Django
-django-wdiget-tweaks
+django-widget-tweaks
