@@ -71,4 +71,7 @@ body {
     <br>
     <input type="submit" value="Submit">
   </form>
+  {% if error_message %}
+  <div class="alert alert-danger">{{ error_message }}</div>
+{% endif %}
 {% endblock %}
