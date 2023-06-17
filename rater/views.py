@@ -28,26 +28,20 @@ def update_avg_rating(movie):
     movie.save()
 @login_required(login_url='login')
 def rate_movie_view(request, movie_id):
-    movie = get_object_or_404(Movie, pk=movie_id)
+    movie = get_object_or_404(Movie,pk=movie_id)
     if request.method == 'POST':
         rating_value = request.POST.get('rating')
         if rating_value is not None:
-            if request.user.is_authenticated:
-                try:
-                    rating = Rating.objects.create(
-                        user=request.user,
-                        movie=movie,
-                        value=rating_value,
-                    )
-                except IntegrityError:
-                    # User has already rated this movie
-                    error_message = 'You have already rated this movie.'
-                    return render(request, 'rater/rate_movie.html', {'movie': movie, 'error_message': error_message})
-            else:
+            try:
                 rating = Rating.objects.create(
+                    user=request.user,
                     movie=movie,
                     value=rating_value,
                 )
+            except IntegrityError:
+                # If user has already rated this movie
+                error_message = 'You have already rated this movie.'
+                return render(request, 'rater/rate_movie.html', {'movie': movie, 'error_message': error_message})
             update_avg_rating(movie)
             return HttpResponseRedirect(reverse('movie_detail', args=[movie_id]))
     return render(request, 'rater/rate_movie.html', {'movie': movie})
