@@ -2,8 +2,7 @@ from . import models,forms
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.db.models import Avg
-from django.conf import settings
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Movie, Rating
 from django.contrib import messages
