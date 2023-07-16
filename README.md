@@ -1,9 +1,9 @@
 # Overview 
 This is website where certain number of films are added by the admin to the db and and displayed on the webpage. The logged in users can rate the movies they choose and/or get the average rate of the movies.
 
-![photo_2023-07-16 20 53 08](https://github.com/MurotovichSh/Movie_rate/assets/124291194/6c7d279f-11f0-4b12-9d60-d0543f065e3c)
-
 ![photo_2023-07-16 20 53 11](https://github.com/MurotovichSh/Movie_rate/assets/124291194/cbe53773-e526-4a0c-9550-dd369573f498)
+
+![photo_2023-07-16 20 53 08](https://github.com/MurotovichSh/Movie_rate/assets/124291194/6c7d279f-11f0-4b12-9d60-d0543f065e3c)
 
 # Features 
 Browse a list of movies on the home page.
