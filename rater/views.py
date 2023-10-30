@@ -13,18 +13,20 @@ from django.contrib.auth.decorators import login_required
 def home_view(request):
     movies=models.Movie.objects.all()
     return render(request, "rater/index.html",{"movies":movies})
-
+# Details of the movie
 def movie_detail_view(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     ratings = Rating.objects.filter(movie=movie)
     avg_rating = ratings.aggregate(models.Avg('value'))['value__avg']
     context = {'movie': movie, 'ratings': ratings, 'avg_rating': avg_rating}
     return render(request, 'rater/movie_detail.html', context)
+# Rating update
 def update_avg_rating(movie):
     ratings = Rating.objects.filter(movie=movie)
     avg_rating = ratings.aggregate(models.Avg('value'))['value__avg']
     movie.avg_rating = avg_rating
     movie.save()
+# Rating function 
 @login_required(login_url='login')
 def rate_movie_view(request, movie_id):
     movie = get_object_or_404(Movie,pk=movie_id)
@@ -44,6 +46,7 @@ def rate_movie_view(request, movie_id):
             update_avg_rating(movie)
             return HttpResponseRedirect(reverse('movie_detail', args=[movie_id]))
     return render(request, 'rater/rate_movie.html', {'movie': movie})
+    
 def signup_view(request):
     userForm=forms.UserForm()
     mydict={'userForm':userForm}
